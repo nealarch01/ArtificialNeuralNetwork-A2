@@ -1,2 +1,2 @@
 #!/bin/zsh
-swiftc -o a main.swift
+swiftc -o a NetworkInput.swift NeuralNetwork.swift Node.swift main.swift

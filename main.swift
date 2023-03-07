@@ -1,57 +1,31 @@
 import Foundation 
 
-struct Node {
-    var collector: Double
-    var connections: [Node]
-
-    init(connector: Double = 0.0) {
-        self.collector = connector
-        self.connections = []
+func parseInput(filename: String) -> NetworkInput? {
+    // Read the file as data
+    guard let fileContents = try? String(contentsOfFile: filename) else {
+        return nil
     }
-
-    mutating func addConnection(node: Node) {
-        connections.append(node) 
+    let fileData = fileContents.data(using: .utf8)!
+    guard let networkInput = try? JSONDecoder().decode(NetworkInput.self, from: fileData) else {
+        print("Failed to decode")
+        return nil 
     }
+    return networkInput
 }
 
-struct NeuralNetwork {
-    var layers: [Node]
-    init () {
-        self.layers = [] 
-    }
-
-    func traverseLayer() {
-        for layer in layers {
-            print(layer.collector)
-        }
-    }
-}
-
-func isInputValid(input: String) -> Bool {
-    let regex = try! NSRegularExpression(pattern: #"[0-9]+"#)
-}
-
-func main() -> Int { 
+func main() { 
     if CommandLine.argc != 2 {
         print("Usage: \(CommandLine.arguments[0]) <input-file>")
-        return 1
+        exit(1)
     }
     let inputFile = CommandLine.arguments[1]
-    // Read the file 
-    let fileContents = try String(contentsOfFile: inputFile, encoding: String.Encoding.utf8)
-    var networkTopology: [Int] = []
-    for value in input.components(separatedBy: ",") {
-        guard let num = Int(value) else {
-            return 1
-        }
-        networkTopology.append(num)
+    guard let input = parseInput(filename: inputFile) else {
+        print("Failed to parse input")
+        exit(1)
     }
-    print(networkTopology)
-    return 0
+    print(input)
+    exit(0)
 }
 
-if main() != 0 {
-    print("An error occured.")
-}
-
+main()
 

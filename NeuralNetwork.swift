@@ -1,5 +1,5 @@
 struct NeuralNetwork {
-    var layers: [Node]
+    var layers: [[Node]]
     init? (layersSize: [Int]) {
         // Check if the array is in descending order
         var least = layersSize[0]
@@ -13,11 +13,16 @@ struct NeuralNetwork {
             least = layersSize[index]
         }
 
+        // Sizes of the neural network are valid
 
+        layers = [] // Initialize
+        for size in layersSize {
+            let column = createLayer(size: size)
+            layers.append(column) 
+        }
         // Begin the formation of a layer
         self.layers = [] 
     }
-
 
     // TODO: Add a function to create a layer
     private func createLayer(size: Int) -> [Node] {
@@ -28,3 +33,4 @@ struct NeuralNetwork {
         return column
     }
 }
+

@@ -23,7 +23,11 @@ func main() {
         print("Failed to parse input")
         exit(1)
     }
-    print(input)
+    guard let network = NeuralNetwork(layerTopology: input.layers) else {
+        print("Failed to initialize network")
+        exit(1)
+    }
+    network.traverseLayers()
     exit(0)
 }
 

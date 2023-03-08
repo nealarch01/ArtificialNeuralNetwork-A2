@@ -1,31 +1,39 @@
 struct NeuralNetwork {
-    var layers: [[Node]]
-    var lastLayer: [Node] {
-        return layers.last!
+    var layers: [[Node]] = []
+    var lastIndex: Int? { 
+        if layers.count == 0 { return nil }
+        return layers.count - 1 
     }
-    init? (layersSize: [Int]) {
+    init? (layerTopology: [Int]) {
         // Check if the array is in descending order
-        var least = layersSize[0]
-        if layersSize.count < 2 {
+        if !areLayerSizesValid(layerTopology) {
+            print("Error: Layer sizes must be descending")
             return nil
-        }
-        for index in 1..<layersSize.count {
-            if layersSize[index] > least {
-                return nil
-            }
-            least = layersSize[index]
         }
 
         // Sizes of the neural network are valid
-
-        layers = [] // Initialize
-        for size in layersSize {
+        for size in layerTopology {
             let column = createLayer(size: size)
             layers.append(column) 
         }
-        // Begin the formation of a layer
-        self.layers = [] 
     }
+
+    private func areLayerSizesValid(_ layerTopology: [Int]) -> Bool { 
+        if layerTopology.count < 2 {
+            return false
+        }
+
+        var least = layerTopology[0]
+
+        for index in 1..<layerTopology.count {
+            if layerTopology[index] > least {
+                return false
+            }
+            least = layerTopology[index]
+        }
+        return true
+    }
+
 
     // TODO: Add a function to create a layer
     private func createLayer(size: Int) -> [Node] {
@@ -34,6 +42,27 @@ struct NeuralNetwork {
             column.append(Node())
         }
         return column
+    }
+
+    public func traverseColumn(atIndex: Int) {
+        if atIndex > lastIndex! {
+            print("Layer does not exist")
+            return
+        }
+        print("Layer: \(atIndex + 1)")
+        for node in layers[atIndex] {
+            print(node)
+        }
+    }
+
+    public func traverseLayers() {
+        if layers.count == 0 {
+            print("The network is empty")
+            return
+        }
+        for index in 0..<layers.count {
+            traverseColumn(atIndex: index)
+        }
     }
 }
 

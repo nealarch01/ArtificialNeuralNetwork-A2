@@ -35,3 +35,39 @@ Note: JSON input file must follow the schema below:
 	"collectors": [4.1, 5.5, 3.3, 10.1]
 }
 ```
+
+
+## Output Example:
+```
+Layer: 1
+Node {
+	collector: 4.1,
+	connection_count: 2
+}
+Node {
+	collector: 5.5,
+	connection_count: 2
+}
+Node {
+	collector: 3.3,
+	connection_count: 2
+}
+Node {
+	collector: 10.1,
+	connection_count: 2
+}
+Layer: 2
+Node {
+	collector: 23.0,
+	connection_count: 1
+}
+Node {
+	collector: 23.0,
+	connection_count: 1
+}
+Layer: 3
+Node {
+	collector: 46.0,
+	connection_count: 0
+}
+```

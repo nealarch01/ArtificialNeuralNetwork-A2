@@ -37,9 +37,15 @@ Note: JSON input file must follow the schema below:
 ```
 
 
-## Output Example:
+## Output for `inputA.json`:
 ```
-Layer: 1
+Printing last layer
+Node {
+	collector: 46.0,
+	connection_count: 0
+}
+========================================
+Printing all layers
 Node {
 	collector: 4.1,
 	connection_count: 2
@@ -56,7 +62,6 @@ Node {
 	collector: 10.1,
 	connection_count: 2
 }
-Layer: 2
 Node {
 	collector: 23.0,
 	connection_count: 1
@@ -65,9 +70,62 @@ Node {
 	collector: 23.0,
 	connection_count: 1
 }
-Layer: 3
 Node {
 	collector: 46.0,
 	connection_count: 0
 }
+========================================
+```
+
+
+## Output for `inputB.json`:
+```
+Printing last layer
+Node {
+	collector: 138.0,
+	connection_count: 0
+}
+========================================
+Printing all layers
+Node {
+	collector: 4.1,
+	connection_count: 3
+}
+Node {
+	collector: 5.5,
+	connection_count: 3
+}
+Node {
+	collector: 3.3,
+	connection_count: 3
+}
+Node {
+	collector: 10.1,
+	connection_count: 3
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 69.0,
+	connection_count: 1
+}
+Node {
+	collector: 69.0,
+	connection_count: 1
+}
+Node {
+	collector: 138.0,
+	connection_count: 0
+}
+========================================
 ```

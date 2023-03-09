@@ -1,16 +1,16 @@
 import Foundation 
 
-func parseInput(filename: String) -> NetworkInput? {
+func parseInput(filename: String) -> NetworkTopology? {
     // Read the file as data
     guard let fileContents = try? String(contentsOfFile: filename) else {
         return nil
     }
     let fileData = fileContents.data(using: .utf8)!
-    guard let networkInput = try? JSONDecoder().decode(NetworkInput.self, from: fileData) else {
+    guard let networkTopology = try? JSONDecoder().decode(NetworkTopology.self, from: fileData) else {
         print("Failed to decode")
         return nil 
     }
-    return networkInput
+    return networkTopology
 }
 
 func main() { 
@@ -19,11 +19,11 @@ func main() {
         exit(1)
     }
     let inputFile = CommandLine.arguments[1]
-    guard let input = parseInput(filename: inputFile) else {
+    guard let networkTopology = parseInput(filename: inputFile) else {
         print("Failed to parse input")
         exit(1)
     }
-    guard let network = NeuralNetwork(layerTopology: input.layers) else {
+    guard let network = NeuralNetwork(topology: networkTopology) else {
         print("Failed to initialize network")
         exit(1)
     }

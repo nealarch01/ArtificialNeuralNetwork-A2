@@ -47,7 +47,6 @@ struct NeuralNetwork {
         return true
     }
 
-    // TODO: Add a function to create a layer
     mutating private func createLayer(size: Int, collectors: [Double]) -> [Node] {
         var column: [Node] = []
         for i in 0..<size {
@@ -68,7 +67,6 @@ struct NeuralNetwork {
             print("Layer does not exist")
             return
         }
-        print("Layer: \(atIndex + 1)")
         for node in layers[atIndex] {
             print("Node {\n\tcollector: \(node.collector),\n\tconnection_count: \(node.connections.count)\n}")
         }

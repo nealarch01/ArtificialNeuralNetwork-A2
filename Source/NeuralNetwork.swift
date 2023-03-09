@@ -10,9 +10,8 @@ struct NeuralNetwork {
             print("Error: Layer sizes must be descending")
             return nil
         }
-
-        if topology.layers.count == topology.collectors.count {
-            print("Layers and collector array size mismatch")
+        if topology.layers[0] != topology.collectors.count {
+            print("Top layer and collector array size mismatch")
             return nil
         }
 

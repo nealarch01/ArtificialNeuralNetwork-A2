@@ -1,2 +1,2 @@
 #!/bin/zsh
-./build.sh && ./a input.json
+./build.sh && ./a inputA.json

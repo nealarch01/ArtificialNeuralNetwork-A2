@@ -27,7 +27,12 @@ func main() {
         print("Failed to initialize network")
         exit(1)
     }
+    print("Printing last layer")
+    network.traverseColumn(atIndex: network.lastIndex!)
+    print("========================================")
+    print("Printing all layers")
     network.traverseLayers()
+    print("========================================")
     exit(0)
 }
 

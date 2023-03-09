@@ -2,12 +2,12 @@ struct Node {
     var collector: Double
     var connections: [Node]
 
-    init(connector: Double = 0.0) {
-        self.collector = connector
+    init(collector: Double = 0.0) {
+        self.collector = collector
         self.connections = []
     }
 
     mutating func addConnection(node: Node) {
-        connections.append(node) 
+        self.connections.append(node) 
     }
 }

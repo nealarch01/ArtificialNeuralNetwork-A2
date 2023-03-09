@@ -1,5 +1,5 @@
 struct NeuralNetwork {
-    var layers: [[Node]] = []
+    private(set) var layers: [[Node]] = []
     var lastIndex: Int? { 
         if layers.count == 0 { return nil }
         return layers.count - 1 
@@ -11,9 +11,24 @@ struct NeuralNetwork {
             return nil
         }
 
+        if topology.layers.count == topology.collectors.count {
+            print("Layers and collector array size mismatch")
+            return nil
+        }
+
+        // Create the first layer 
+        let firstLayer = createLayer(size: topology.layers[0], collectors: topology.collectors)
+        layers.append(firstLayer)
+
         // Sizes of the neural network are valid
-        for size in topology.layers {
-            let column = createLayer(size: size)
+        for i in 1..<topology.layers.count {
+            let collectorSummation = layerSummation(atIndex: i - 1)
+            let column = createLayer(
+                size: topology.layers[i], 
+                collectors: Array(
+                    repeating: collectorSummation, 
+                    count: topology.layers[i]
+            ))
             layers.append(column) 
         }
     }
@@ -36,10 +51,17 @@ struct NeuralNetwork {
 
 
     // TODO: Add a function to create a layer
-    private func createLayer(size: Int) -> [Node] {
+    mutating private func createLayer(size: Int, collectors: [Double]) -> [Node] {
         var column: [Node] = []
-        for _ in 0..<size {
-            column.append(Node())
+        for i in 0..<size {
+            let newNode = Node(collector: collectors[i])
+            // Go to the previous layer
+            if lastIndex ?? -1 >= 0 {
+                for i in 0..<layers[lastIndex!].count {
+                    layers[lastIndex!][i].addConnection(node: newNode)
+                }
+            }
+            column.append(newNode)
         }
         return column
     }
@@ -55,6 +77,9 @@ struct NeuralNetwork {
         }
     }
 
+
+
+
     public func traverseLayers() {
         if layers.count == 0 {
             print("The network is empty")
@@ -64,5 +89,18 @@ struct NeuralNetwork {
             traverseColumn(atIndex: index)
         }
     }
+
+
+
+
+    public func layerSummation(atIndex: Int) -> Double {
+        var sum: Double = 0.0
+        for node in layers[atIndex] {
+            sum += node.collector
+        }
+        return sum
+    }
+
+
 }
 

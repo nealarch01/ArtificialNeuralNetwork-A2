@@ -4,15 +4,15 @@ struct NeuralNetwork {
         if layers.count == 0 { return nil }
         return layers.count - 1 
     }
-    init? (layerTopology: [Int]) {
+    init? (topology: NetworkTopology) {
         // Check if the array is in descending order
-        if !areLayerSizesValid(layerTopology) {
+        if !areLayerSizesValid(topology.layers) {
             print("Error: Layer sizes must be descending")
             return nil
         }
 
         // Sizes of the neural network are valid
-        for size in layerTopology {
+        for size in topology.layers {
             let column = createLayer(size: size)
             layers.append(column) 
         }

@@ -4,8 +4,8 @@ struct NeuralNetwork {
         if layers.count == 0 { return nil }
         return layers.count - 1 
     }
+
     init? (topology: NetworkTopology) {
-        // Check if the array is in descending order
         if !areLayerSizesValid(topology.layers) {
             print("Error: Layer sizes must be descending")
             return nil
@@ -20,7 +20,6 @@ struct NeuralNetwork {
         let firstLayer = createLayer(size: topology.layers[0], collectors: topology.collectors)
         layers.append(firstLayer)
 
-        // Sizes of the neural network are valid
         for i in 1..<topology.layers.count {
             let collectorSummation = layerSummation(atIndex: i - 1)
             let column = createLayer(
@@ -49,7 +48,6 @@ struct NeuralNetwork {
         return true
     }
 
-
     // TODO: Add a function to create a layer
     mutating private func createLayer(size: Int, collectors: [Double]) -> [Node] {
         var column: [Node] = []
@@ -77,9 +75,6 @@ struct NeuralNetwork {
         }
     }
 
-
-
-
     public func traverseLayers() {
         if layers.count == 0 {
             print("The network is empty")
@@ -90,9 +85,6 @@ struct NeuralNetwork {
         }
     }
 
-
-
-
     public func layerSummation(atIndex: Int) -> Double {
         var sum: Double = 0.0
         for node in layers[atIndex] {
@@ -100,7 +92,5 @@ struct NeuralNetwork {
         }
         return sum
     }
-
-
 }
 

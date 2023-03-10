@@ -23,10 +23,10 @@ func main() {
         print("Failed to parse input")
         exit(1)
     }
-    guard let network = NeuralNetwork(topology: networkTopology) else {
-        print("Failed to initialize network")
-        exit(1)
+    if !networkTopology.isValid() {
+        print("Invalid network topology input")
     }
+    let network = NeuralNetwork(topology: networkTopology)
     print("Printing last layer")
     network.traverseColumn(atIndex: network.lastIndex!)
     print("========================================")

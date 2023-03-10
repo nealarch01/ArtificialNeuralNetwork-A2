@@ -5,16 +5,7 @@ struct NeuralNetwork {
         return layers.count - 1 
     }
 
-    init? (topology: NetworkTopology) {
-        if !areLayerSizesValid(topology.layers) {
-            print("Error: Layer sizes must be descending")
-            return nil
-        }
-        if topology.layers[0] != topology.collectors.count {
-            print("Top layer and collector array size mismatch")
-            return nil
-        }
-
+    init (topology: NetworkTopology) {
         // Create the first layer 
         let firstLayer = createLayer(size: topology.layers[0], collectors: topology.collectors)
         layers.append(firstLayer)
@@ -29,22 +20,6 @@ struct NeuralNetwork {
             ))
             layers.append(column) 
         }
-    }
-
-    private func areLayerSizesValid(_ layerTopology: [Int]) -> Bool { 
-        if layerTopology.count < 2 {
-            return false
-        }
-
-        var least = layerTopology[0]
-
-        for index in 1..<layerTopology.count {
-            if layerTopology[index] > least {
-                return false
-            }
-            least = layerTopology[index]
-        }
-        return true
     }
 
     mutating private func createLayer(size: Int, collectors: [Double]) -> [Node] {

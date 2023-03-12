@@ -129,3 +129,71 @@ Node {
 }
 ========================================
 ```
+
+## Output for `inputC.json`
+```
+Printing last layer
+Node {
+	collector: 552.0,
+	connection_count: 0
+}
+========================================
+Printing all layers
+Node {
+	collector: 4.1,
+	connection_count: 4
+}
+Node {
+	collector: 5.5,
+	connection_count: 4
+}
+Node {
+	collector: 3.3,
+	connection_count: 4
+}
+Node {
+	collector: 10.1,
+	connection_count: 4
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 23.0,
+	connection_count: 2
+}
+Node {
+	collector: 92.0,
+	connection_count: 3
+}
+Node {
+	collector: 92.0,
+	connection_count: 3
+}
+Node {
+	collector: 184.0,
+	connection_count: 1
+}
+Node {
+	collector: 184.0,
+	connection_count: 1
+}
+Node {
+	collector: 184.0,
+	connection_count: 1
+}
+Node {
+	collector: 552.0,
+	connection_count: 0
+}
+========================================
+```

@@ -43,7 +43,7 @@ struct NeuralNetwork {
             return
         }
         for node in layers[atIndex] {
-            print("Node {\n\tcollector: \(node.collector),\n\tconnection_count: \(node.connections.count)\n}")
+            print("Node {\n\tcollector: \(node.collector),\n\tconnection_count: \(node.connections.count)\n\tweights: \(node.weights)\n}")
         }
     }
 

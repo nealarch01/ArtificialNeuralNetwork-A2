@@ -1,3 +1,5 @@
+import Foundation
+
 struct NeuralNetwork {
     private(set) var layers: [[Node]] = []
     var lastIndex: Int? { 

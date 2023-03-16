@@ -1,6 +1,6 @@
 import Foundation 
 
-struct NetworkTopology: Decodable {
+struct NetworkTopology: Codable {
     var layers: [Int]
     var collectors: [Double]
 

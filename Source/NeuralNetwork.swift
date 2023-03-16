@@ -1,6 +1,6 @@
 import Foundation
 
-struct NeuralNetwork {
+struct NeuralNetwork: Codable {
     private(set) var layers: [[Node]] = []
     var lastIndex: Int? { 
         if layers.count == 0 { return nil }
@@ -65,6 +65,16 @@ struct NeuralNetwork {
             sum += node.collector
         }
         return sum
+    }
+
+
+    public func serialize() -> String? {
+        guard let data = try? JSONEncoder().encode(self) else {
+            print("An error occurred while serializing the network")
+            return nil
+        }
+        let string = String(data: data, encoding: .utf8)
+        return string
     }
 }
 

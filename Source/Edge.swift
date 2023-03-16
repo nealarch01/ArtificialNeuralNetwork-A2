@@ -1,6 +1,6 @@
 import Foundation
 
-struct Edge {
+struct Edge: Codable {
     var node: Node
     var weight: Double
 

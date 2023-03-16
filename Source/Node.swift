@@ -1,6 +1,6 @@
 import Foundation 
 
-struct Node {
+struct Node: Codable {
     var collector: Double
     var connections: [Edge]
 

@@ -29,10 +29,10 @@ func main() {
     let network = NeuralNetwork(topology: networkTopology)
     print("Printing last layer")
     network.traverseColumn(atIndex: network.lastIndex!)
-    print("========================================")
-    print("Printing all layers")
-    network.traverseLayers()
-    print("========================================")
+    guard let serializedNetwork = network.serialize() else {
+        exit(2)
+    }
+    print(serializedNetwork)
     exit(0)
 }
 

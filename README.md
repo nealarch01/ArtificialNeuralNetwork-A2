@@ -29,7 +29,7 @@ Implemented in Swift
 After building, execute the file using format: `./a <input-file.json>`
 Note: JSON input file must follow the schema below:
 
-```json
+```
 Printing last layer
 Node {
 	collector: 46.0

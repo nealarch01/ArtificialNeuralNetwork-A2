@@ -7,7 +7,7 @@ struct NeuralNetwork {
         return layers.count - 1 
     }
 
-    init (topology: NetworkTopology) {
+    init(topology: NetworkTopology) {
         // Create the first layer 
         let firstLayer = createLayer(size: topology.layers[0], collectors: topology.collectors)
         layers.append(firstLayer)
@@ -45,7 +45,7 @@ struct NeuralNetwork {
             return
         }
         for node in layers[atIndex] {
-            print("Node {\n\tcollector: \(node.collector),\n\tconnection_count: \(node.connections.count)\n\tweights: \(node.weights)\n}")
+            node.display()
         }
     }
 

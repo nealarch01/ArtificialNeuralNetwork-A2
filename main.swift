@@ -1,4 +1,5 @@
 import Foundation 
+import Darwin
 
 func parseInput(filename: String) -> NetworkTopology? {
     // Read the file as data
@@ -11,6 +12,17 @@ func parseInput(filename: String) -> NetworkTopology? {
         return nil 
     }
     return networkTopology
+}
+
+func writeToFile(string: String, outputFilename: String) {
+    let currentPath = URL(string: "file://" + FileManager.default.currentDirectoryPath)!
+    let filepath = currentPath.appendingPathComponent(outputFilename)
+    // print(filepath)
+    do {
+        try string.write(to: filepath, atomically: true, encoding: String.Encoding.utf8)
+    } catch let error {
+        print(error.localizedDescription)
+    }
 }
 
 func main() { 
@@ -32,7 +44,8 @@ func main() {
     guard let serializedNetwork = network.serialize() else {
         exit(2)
     }
-    print(serializedNetwork)
+    // print(serializedNetwork)
+    writeToFile(string: serializedNetwork, outputFilename: "network.json")
     exit(0)
 }
 

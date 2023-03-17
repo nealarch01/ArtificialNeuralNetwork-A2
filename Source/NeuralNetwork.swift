@@ -69,7 +69,10 @@ struct NeuralNetwork: Codable {
 
 
     public func serialize() -> String? {
-        guard let data = try? JSONEncoder().encode(self) else {
+        // Pretty print the JSON
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .prettyPrinted
+        guard let data = try? jsonEncoder.encode(self) else {
             print("An error occurred while serializing the network")
             return nil
         }

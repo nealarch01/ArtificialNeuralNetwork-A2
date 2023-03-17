@@ -1,0 +1,136 @@
+{
+  "layers" : [
+    [
+      {
+        "collector" : 4.0999999999999996,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : 0.7100338854871957
+          },
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : 0.28999783603190776
+          }
+        ]
+      },
+      {
+        "collector" : 5.5,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.050727195025186633
+          },
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : 0.19557644948532338
+          }
+        ]
+      },
+      {
+        "collector" : 3.2999999999999998,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.014131323084312086
+          },
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : 0.29845778311290005
+          }
+        ]
+      },
+      {
+        "collector" : 10.1,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.20622647738165556
+          },
+          {
+            "node" : {
+              "collector" : 23,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.2460811847648865
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "collector" : 23,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 46,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.027270809760708836
+          }
+        ]
+      },
+      {
+        "collector" : 23,
+        "connections" : [
+          {
+            "node" : {
+              "collector" : 46,
+              "connections" : [
+
+              ]
+            },
+            "weight" : -0.0057022099369445911
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "collector" : 46,
+        "connections" : [
+
+        ]
+      }
+    ]
+  ]
+}

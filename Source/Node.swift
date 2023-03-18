@@ -1,4 +1,4 @@
-struct Node {
+class Node {
     var collector: Double
     var connections: [Node]
 
@@ -7,7 +7,7 @@ struct Node {
         self.connections = []
     }
 
-    mutating func addConnection(node: Node) {
+    func addConnection(node: Node) {
         self.connections.append(node) 
     }
 }

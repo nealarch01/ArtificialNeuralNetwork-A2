@@ -44,8 +44,8 @@ func main() {
     guard let serializedNetwork = network.serialize() else {
         exit(2)
     }
-    // print(serializedNetwork)
-    writeToFile(string: serializedNetwork, outputFilename: "network.json")
+    print(serializedNetwork)
+    // writeToFile(string: serializedNetwork, outputFilename: "network.json")
     exit(0)
 }
 

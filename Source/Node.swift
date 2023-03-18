@@ -1,6 +1,6 @@
 import Foundation 
 
-struct Node: Codable {
+class Node: Codable {
     var collector: Double
     var connections: [Edge]
 
@@ -9,7 +9,7 @@ struct Node: Codable {
         self.connections = []
     }
 
-    mutating func addConnection(node: Node, weight: Double = Double.random(in: -1.0...1.0)) {
+    func addConnection(node: Node, weight: Double = Double.random(in: -1.0...1.0)) {
         self.connections.append(Edge(node: node, weight: weight))
     }
 
